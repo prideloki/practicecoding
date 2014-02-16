@@ -5,7 +5,7 @@ public class SkipRope {
 		int[] partners = new int[2];
 		int minIndex=0;
 		mergeSort(candidates);
-		System.out.println(Arrays.toString(candidates));
+		
 		for(int i=0;i<candidates.length;i++){
 			if(height<=candidates[i]){
 				minIndex=i;
@@ -66,6 +66,7 @@ public class SkipRope {
 			}
 		}
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[][] candidates = {
