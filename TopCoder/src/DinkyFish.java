@@ -1,10 +1,12 @@
 
 public class DinkyFish {
-	//need to check for example
+	
 	public static int monthsUntilCrowded(int tankVolume, int maleNum, int femaleNum){
 		int couple =(maleNum<=femaleNum)?maleNum:femaleNum;
 		int lonelyfish=(maleNum+femaleNum)-couple*2;
 		int month=-1;
+		// fish 1 water 1/2 lt
+		// n fish water n/2 lt
 		while((couple+lonelyfish+1)/2<=tankVolume){
 			couple*=2;
 			month++;
