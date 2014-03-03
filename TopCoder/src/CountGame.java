@@ -1,13 +1,16 @@
 
 public class CountGame {
 	public static int howMany(int maxAdd,int goal,int next){
-		
-		int temp=maxAdd+1;
-		int temp2=next/temp;
-		int temp3=maxAdd*temp2+(goal%maxAdd);
-		if(next>temp3)return -1;
-		return 0;
+		int count=0;
+		while(goal>=next){
+			if(goal<(next+maxAdd)){
+				return 1+(goal-next);
+			}
+			goal-=maxAdd+1;
+		}
+		return -1;
 	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] maxAdd={3,5,5};
