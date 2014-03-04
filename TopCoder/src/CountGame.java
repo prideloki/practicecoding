@@ -10,7 +10,11 @@ public class CountGame {
 		}
 		return -1;
 	}
-
+	public static int howMany2(int maxAdd,int goal, int next){
+		if((goal-next+1)%(maxAdd+1)==0)
+			return -1;
+		return (goal-next+1)%(maxAdd+1);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] maxAdd={3,5,5};
@@ -18,6 +22,7 @@ public class CountGame {
 		int[]next={10,10,9};
 		for(int i=0;i<goal.length;i++){
 			System.out.println(howMany(maxAdd[i], goal[i], next[i]));
+			System.out.println(">>>>"+howMany2(maxAdd[i], goal[i], next[i]));
 		}
 	}
 
