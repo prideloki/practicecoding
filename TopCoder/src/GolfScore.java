@@ -28,7 +28,7 @@ public class GolfScore {
 				stroke = -3;
 				break;
 			case "hole in one":
-				stroke = 0;
+				stroke = -1*(parValues[i]-1);
 				break;
 			default:
 				stroke = Integer.MIN_VALUE;
@@ -70,6 +70,7 @@ public class GolfScore {
 						"hole in one", "eagle", "birdie" } };
 		for (int i = 0; i < parValues.length; i++) {
 			System.out.println(tally(parValues[i], scoreSheet[i]));
+			//56
 		}
 	}
 

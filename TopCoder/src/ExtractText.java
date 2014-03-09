@@ -13,7 +13,7 @@ public class ExtractText {
 		String line=null;
 		boolean mark=false;
 		while((line=reader.readLine())!=null){
-			if(line.contains("Week 6"))mark=true;
+			if(line.contains("Week 7"))mark=true;
 			if(mark&&line.contains("class=\"lecture-link\">")){
 				line=reader.readLine();
 				System.out.println("Watch "+line.substring(0,line.indexOf("<")));
