@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class OfficeParking {
+	
 	public static int spacesUsed(String[] events) {
 		int count = 0;
 		String[] spots = new String[events.length];
@@ -29,7 +30,7 @@ public class OfficeParking {
 		int i=0;
 		for(i=0;i<spots.length;i++){
 			if(action.equals("arrives")){
-				if(spots[i]==null) break;
+				if(spots[i]==null)break;
 				if(spots[i].equals("free"))return i;
 			}else if(action.equals("departs")){
 				if(spots[i].equals(name)){
