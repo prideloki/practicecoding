@@ -25,27 +25,21 @@ public class Lottery {
 			rule = rule.substring(mark + 1);
 			isUnique = (rule.equals("T")) ? true : false;
 
-			if (!isSorted && !isUnique) {
-				result[i] = 1.0 / (Math.pow(choices, blank));
-
-			} else if (isSorted && !isUnique) {
-				long calc = calc(choices + blank - 1, choices - 1);
-				result[i] = 1.0 / (calc / factorial(blank));
-
-			} else if (!isSorted && isUnique) {
-				long calc = calc(choices, choices - blank);
-				result[i] = 1.0 / (calc);
-			} else if (isSorted && isUnique) {
-				long calc = calc(choices, choices - blank);
-				result[i] = 1.0 / (calc / factorial(blank));
-
+			
+			if(isSorted&&isUnique){
+				result[i]=1.0/permu(choices,choices- blank);
+			}else if(isSorted&&!isUnique){
+				result[i]=1.0/Math.pow(choices,blank);
+			}else if(!isSorted&&isUnique){
+				result[i]=1.0/(permu(choices, choices-blank)/factorial(blank));
+			}else if(!isSorted&&!isUnique){
+				result[i]=1.0/(permu(blank+choices-1, choices-1)/factorial(blank));
 			}
-
 		}
 		return sorted(names, result);
 	}
 
-	private static long calc(int n, int r) {
+	private static long permu(int n, int r) {
 		long c = 1;
 
 		for (int i = n; i > r; i--) {
@@ -135,8 +129,8 @@ public class Lottery {
 			this.prob = prob;
 		}
 	}
-}
-/*	public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		String[] rules = { "PICK ANY TWO: 10 2 F F",
 				"PICK TWO IN ORDER: 10 2 T F", "PICK TWO DIFFERENT: 10 2 F T",
 				"PICK TWO LIMITED: 10 2 T T" };
@@ -152,7 +146,7 @@ public class Lottery {
 	}
 
 }
-*/
+
 
 /*
 

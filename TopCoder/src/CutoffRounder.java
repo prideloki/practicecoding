@@ -12,14 +12,31 @@ public class CutoffRounder {
 		return result;
 	}
 
-	private double parseDouble(String d) {
-		double result=0.0;
-		int pointPos=d.indexOf(".");
-		if(pointPos>0){
-			for(int i=0;i<pointPos;i++){
-				//result+=
+	private static double parseDouble(String d) {
+		double result = 0.0;
+		int pointPos = d.indexOf(".");
+		//Positive num
+		if (pointPos > 0) {
+			int fracLeng = d.length() - (pointPos + 1);
+
+			for (int i = 0; i < fracLeng; i++) {
+
+				result += (Character
+						.getNumericValue(d.charAt(pointPos + 1 + i)))
+						* Math.pow(10, -i - 1);
+
 			}
 		}
-		return 0.0;
+		for (int i = 0; i < pointPos; i++) {
+			result += (Character.getNumericValue(d.charAt(i)))
+					* Math.pow(10, pointPos - 1 - i);
+
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		String d = "0";
+		System.out.println(parseDouble(d));
 	}
 }
