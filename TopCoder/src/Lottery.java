@@ -26,32 +26,31 @@ public class Lottery {
 			isUnique = (rule.equals("T")) ? true : false;
 
 			
-			if(isSorted&&isUnique){
-				result[i]=1.0/permu(choices,choices- blank);
-			}else if(isSorted&&!isUnique){
-				result[i]=1.0/Math.pow(choices,blank);
-			}else if(!isSorted&&isUnique){
-				result[i]=1.0/(permu(choices, choices-blank)/factorial(blank));
+			if(!isSorted&&isUnique){
+				result[i]=permu(choices,blank);
 			}else if(!isSorted&&!isUnique){
-				result[i]=1.0/(permu(blank+choices-1, choices-1)/factorial(blank));
+				result[i]=Math.pow(choices,blank);
+			}else if(isSorted&&isUnique){
+				result[i]=(permu(choices, blank)/factorial(blank));
+			}else if(isSorted&&!isUnique){ 
+				result[i]=(permu(blank+choices-1,blank)/factorial(blank));
 			}
+			result[i]=1.0/result[i];
 		}
 		return sorted(names, result);
 	}
 
 	private static long permu(int n, int r) {
 		long c = 1;
-
-		for (int i = n; i > r; i--) {
-			c *= i;
-
+		for(int i=n;i>(n-r);i--){
+			c*=i;
 		}
 
 		return c;
 	}
 
 	private static long factorial(int f) {
-		long c = 1;
+		long c=1;
 		for (int i = 2; i <= f; i++) {
 			c *= i;
 		}
@@ -142,7 +141,7 @@ public class Lottery {
 		for (int i = 0; i < rules2.length; i++) {
 			System.out.println(result[i]);
 		}
-
+		
 	}
 
 }
