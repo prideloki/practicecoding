@@ -14,12 +14,11 @@ public class MarbleDecoration {
 		
 		
 		if(rgb[2]<rgb[1])swap(rgb,1,2);
-		
 		int result;
-		if(rgb[1]==rgb[2])result= rgb[1]+rgb[2];
-		else if(rgb[1]==0)result=1;
-		else	result=rgb[1]+((rgb[1]%2==0)?rgb[2]-2:rgb[2]-1);
-		System.out.println(">>"+result);
+		if(rgb[1]>rgb[2])result=2*rgb[2]+1;
+		else if(rgb[1]<rgb[2])result=2*rgb[1]+1;
+		else result=rgb[1]+rgb[2];
+		
 		return result;
 	}
 	private void swap(int[] d,int a,int b){
