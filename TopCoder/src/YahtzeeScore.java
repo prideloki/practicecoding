@@ -1,29 +1,31 @@
-
 public class YahtzeeScore {
-	public int maxPointsFirst(int[] toss){
-		int max=toss[0];
-		int sum=0;
-		for(int i=1;i<toss.length;i++){
-			if(toss[i]>max)max=toss[i];
-		}
+
+	public int maxPoints(int[] toss) {
+		int maxPoints=0;
+		
+		/*sol 1 O(n^2)
 		for(int i=0;i<toss.length;i++){
-			if(toss[i]==max)sum+=toss[i];
-		}
-		return sum;
-	}
-	public int maxPoints(int[] toss){
-		int sum=toss[0];
-		int max=toss[0];
-		for(int i=1;i<toss.length;i++){
-			if(toss[i]>max){
-				max=toss[i];
-				sum=toss[i];
+			int chosen=toss[i];
+			int sum=0;
+			for(int j=0;j<toss.length;j++){
+				if(chosen==toss[j]){
+					sum+=chosen;
+				}
 			}
-			else if(toss[i]==max){
-				sum+=toss[i];
-			}
+			if(sum>maxPoints)maxPoints=sum;
 		}
-		return sum;
+		*/
+		//sol 2 O(6*n)
+		int[] sum=new int[6];
+		for(int i=0;i<toss.length;i++){
+			sum[toss[i]-1]++;
+		}
+		for(int i=0;i<sum.length;i++){
+			int totalPoint=sum[i]*(i+1);
+			if(totalPoint>maxPoints)maxPoints=totalPoint;
+		}
+		
+		return maxPoints;
 	}
 
 }
